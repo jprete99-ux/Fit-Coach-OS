@@ -20,3 +20,27 @@
 .test-note{margin-top:14px;font-size:12px}.invite-status b{color:var(--lime)}
 
 .add-client-hero{background:linear-gradient(135deg,#b8ff4a,#71e64a)!important;color:#07131f!important;border:0!important;box-shadow:0 10px 28px #9cff4a22}.tabs{gap:4px!important;justify-content:space-between}.tabs .tab{padding-left:12px!important;padding-right:12px!important;white-space:nowrap;font-size:14px}@media(max-width:900px){.tabs{justify-content:flex-start;overflow-x:auto}.hero-actions{flex-wrap:wrap}}@media(max-width:600px){.hero-actions button{flex:1 1 100%}}
+
+
+/* Client Hub polish */
+#clients .grid{grid-template-columns:minmax(0,1fr);max-width:980px;margin:18px auto}
+#clients .card{grid-column:1/-1}
+#clients .card.wide{padding:28px}
+#sessionComposer{margin:18px 0 26px;padding:22px;background:linear-gradient(145deg,#0a192a,#07131f);border:1px solid #31506e;border-radius:18px}
+#sessionComposer h3{margin-bottom:18px;font-size:22px}
+#sessionComposer label{display:block;margin:0 0 16px;color:#bcd0df;font-weight:750}
+#sessionComposer select,#sessionComposer input[type="date"]{display:block;width:100%;margin-top:7px;padding:12px 13px;border-radius:11px;border:1px solid #355775;background:#071524;color:#fff;font-size:15px}
+#sessionComposer textarea{display:block;margin-top:7px}
+#clients .client-form{padding-top:22px;border-top:1px solid #29405e;gap:12px}
+#clients .client-form:before{content:"Add a Client";display:block;font-size:21px;font-weight:850;color:#e9f7ff;margin-bottom:2px}
+#clients .client-form input,#clients .client-form textarea{font-size:15px}
+#clients .client-form button{width:auto;justify-self:start;min-width:160px}
+#clients .grid>.card:nth-child(2){display:none}
+@media(min-width:720px){
+  #sessionComposer{display:grid!important;grid-template-columns:1fr 220px;column-gap:16px}
+  #sessionComposer h3,#sessionComposer label:nth-of-type(3),#sessionComposer>p,#sessionComposer>button{grid-column:1/-1}
+  #sessionComposer label:nth-of-type(1),#sessionComposer label:nth-of-type(2){grid-column:auto}
+  #sessionComposer>button{width:max-content}
+  #sessionComposer>button.secondary{margin-left:145px;margin-top:-48px}
+}
+@media(max-width:719px){#clients .card.wide{padding:20px}#sessionComposer{padding:16px}}
