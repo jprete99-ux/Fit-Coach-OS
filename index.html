@@ -23,7 +23,7 @@
     </div>
     <label>Anything Elise should know?<textarea id="onboardNotes" class="answer" placeholder="Preferences, limitations, past injuries you choose to share, or anything that helps Elise coach you better."></textarea></label>
     <label class="consent-line"><input id="recordConsent" type="checkbox"> I understand Elise may ask permission to record portions of a training session for private transcription and coaching recaps. I can decline or ask to pause at any time.</label>
-    <button id="portalEnterButton" onclick="completeOnboarding()">Enter My Portal</button>
+    <button id="portalEnterButton" type="button" onclick="secureInviteSubmit(event)">Enter My Portal</button>
     <button class="secondary" onclick="demoPortal()">Preview as Demo Client</button><p class="muted test-note">Test mode: no real credentials or email are sent yet.</p>
   </div>
 </div>
