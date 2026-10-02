@@ -80,3 +80,27 @@ function resetTestClient(){localStorage.removeItem("fitcoach_test_invite");local
 
 
 document.addEventListener("DOMContentLoaded",()=>{const logged=!!coachToken(),l=document.getElementById("coachLogin"),f=document.getElementById("inviteForm");if(l)l.style.display=logged?"none":"block";if(f)f.style.display=logged?"block":"none"});
+
+async function acceptSecureInvite(){
+ const token=new URLSearchParams(location.search).get("invite"),st=document.getElementById("acceptInviteStatus"),p=document.getElementById("invitePassword").value;
+ if(!token){st.textContent="Invitation link is missing.";return}
+ if(!p||p.length<8){st.textContent="Choose a password with at least 8 characters.";return}
+ st.textContent="Creating your private account...";
+ try{
+  const r=await fetch(API_BASE+"/auth/accept-invite",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({token,password:p,goal:document.getElementById("onboardGoal").value,schedule:document.getElementById("onboardSchedule").value,notes:document.getElementById("onboardNotes").value,recordConsent:document.getElementById("recordConsent").checked})});
+  const d=await r.json();if(!r.ok)throw new Error(d.error||"Could not create account");
+  localStorage.setItem("fitcoach_portal_profile",JSON.stringify({name:document.getElementById("onboardName").value||"Client",goal:document.getElementById("onboardGoal").value,experience:document.getElementById("onboardExperience").value,schedule:document.getElementById("onboardSchedule").value,notes:document.getElementById("onboardNotes").value}));
+  history.replaceState({},document.title,location.pathname);openPortal(document.getElementById("onboardName").value||"Client",document.getElementById("onboardGoal").value)
+ }catch(x){st.textContent=x.message}
+}
+document.addEventListener("DOMContentLoaded",()=>{
+ const token=new URLSearchParams(location.search).get("invite");
+ if(token){
+  show("portal");
+  const s=document.getElementById("secureInviteSetup");if(s)s.style.display="block";
+  const b=document.getElementById("portalEnterButton");if(b){b.textContent="Create My Account & Enter Portal";b.onclick=acceptSecureInvite}
+  const demo=[...document.querySelectorAll("#portalWelcome button.secondary")];demo.forEach(x=>x.style.display="none");
+  const note=document.querySelector("#portalWelcome .test-note");if(note)note.style.display="none";
+  window.scrollTo({top:0});
+ }
+});
