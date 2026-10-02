@@ -1,0 +1,27 @@
+const qs=[
+["Hamstrings","Give me five exercises that train the hamstrings, and tell me why you might choose each one."],
+["Coaching","Teach a brand-new client how to perform a goblet squat in under 45 seconds."],
+["Modification","Your client feels an RDL mostly in the lower back. What do you check and change?"],
+["Programming","Build a 30-minute full-body session for a healthy 55-year-old beginner."],
+["Safety","A client reports sharp knee pain during a lunge. What do you do next?"],
+["Anatomy","Explain the difference between a leg curl and an RDL in terms of hamstring function."],
+["Curveball","The cable station is occupied. Give me two substitutions for a seated cable row and defend them."],
+["Client","A 70-year-old beginner has poor balance. Choose three leg exercises and explain your choices."]
+];
+const ex=[
+{name:"Goblet Squat",group:"Squat • Quads + Glutes",cue:"Weight close. Brace. Sit between the hips. Knees track with toes. Push the floor away.",reg:"Box squat / sit-to-stand",prog:"Heavier goblet or front squat",why:"Easy to teach, load and observe."},
+{name:"DB Romanian Deadlift",group:"Hinge • Hamstrings + Glutes",cue:"Soft knees. Hips back. Dumbbells close. Stop before spinal position changes.",reg:"Wall hinge / elevated KB deadlift",prog:"Barbell or single-leg RDL",why:"Teaches hip hinge and posterior-chain loading."},
+{name:"Reverse Lunge",group:"Lunge • Quads + Glutes",cue:"Step back under control. Stay tall. Front foot planted. Push the floor away.",reg:"Supported split squat",prog:"Loaded or walking lunge",why:"Unilateral strength with manageable deceleration demands."},
+{name:"Seated Leg Curl",group:"Knee Flexion • Hamstrings",cue:"Align knee with machine pivot. Control both directions. Avoid lifting hips.",reg:"Lighter load / shorter ROM",prog:"Single-leg curl",why:"Stable way to isolate knee-flexion function."},
+{name:"Glute Bridge",group:"Hip Extension • Glutes",cue:"Ribs down. Brace. Drive through feet. Extend hips without over-arching.",reg:"Shorter ROM",prog:"Hip thrust / loaded bridge",why:"Accessible glute-focused hip extension."},
+{name:"Lat Pulldown",group:"Vertical Pull • Lats + Biceps",cue:"Stay tall. Set shoulders. Drive elbows toward sides. Control return.",reg:"Band pulldown",prog:"Assisted pull-up / pull-up",why:"Scalable vertical pulling pattern."},
+{name:"Incline Push-up",group:"Horizontal Push • Chest + Triceps",cue:"Straight body line. Brace. Lower chest between hands. Push away.",reg:"Wall push-up",prog:"Floor push-up / DB press",why:"Easy to scale by changing hand height."},
+{name:"Seated Cable Row",group:"Horizontal Pull • Back + Biceps",cue:"Stay tall. Ribs controlled. Drive elbows back. Finish without shrugging.",reg:"Band row",prog:"Single-arm or unsupported row",why:"Stable horizontal pull with easy load adjustment."}
+];
+let idx=0;
+function show(id){document.querySelectorAll(".view").forEach(x=>x.classList.remove("active"));document.querySelectorAll(".tab").forEach(x=>x.classList.remove("active"));document.getElementById(id).classList.add("active");document.querySelector('[data-view="'+id+'"]').classList.add("active")}
+function renderExercises(){document.getElementById("exerciseList").innerHTML=ex.map(e=>'<div class="exercise"><h3>'+e.name+'</h3><span class="badge">'+e.group+'</span><p><b>Coach it:</b> '+e.cue+'</p><p><b>Regression:</b> '+e.reg+' &nbsp; <b>Progression:</b> '+e.prog+'</p><p class="muted"><b>Why prescribe it?</b> '+e.why+'</p></div>').join("")}
+function nextQ(){idx=Math.floor(Math.random()*qs.length);document.getElementById("qcat").textContent=qs[idx][0];document.getElementById("question").textContent=qs[idx][1];document.getElementById("response").value="";document.getElementById("feedback").innerHTML=""}
+function selfScore(n){let d=JSON.parse(localStorage.getItem("fitcoach")||'{"attempts":0,"total":0}');d.attempts++;d.total+=n;localStorage.setItem("fitcoach",JSON.stringify(d));document.getElementById("feedback").innerHTML='<p><b>Saved.</b> Now say one thing you would improve before the real interview.</p>';stats()}
+function stats(){let d=JSON.parse(localStorage.getItem("fitcoach")||'{"attempts":0,"total":0}');let pct=d.attempts?Math.round(d.total/d.attempts*20):0;document.querySelectorAll(".attempts").forEach(x=>x.textContent=d.attempts);document.querySelectorAll(".readiness").forEach(x=>x.textContent=pct+"%");document.querySelectorAll(".fill").forEach(x=>x.style.width=pct+"%")}
+document.addEventListener("DOMContentLoaded",()=>{renderExercises();nextQ();stats()});
