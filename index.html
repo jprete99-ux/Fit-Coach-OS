@@ -26,7 +26,7 @@
     <button class="secondary" onclick="demoPortal()">Preview as Demo Client</button>
   </div>
 </div>
-<div id="portalDashboard" style="display:none">
+<div id="portalDashboard" style="display:none"><div class="client-mode-bar"><div><b>ELISE FIT</b><span>My Private Coaching Portal</span></div><button class="secondary" onclick="exitClientPortal()">Exit Client Portal</button></div>
   <div class="portal-hero"><div><p class="muted">ELISE FIT • PRIVATE COACHING PORTAL</p><h2 id="portalGreeting">Good morning.</h2><p id="portalGoalLine">Here’s what matters for your next session.</p><div class="hero-actions"><button onclick="portalTab('workout')">My Next Workout</button><button class="secondary" onclick="portalTab('ai')">Ask Elise AI</button></div></div><div class="portal-score"><small>CONSISTENCY</small><strong>4</strong><span>sessions this month</span></div></div>
   <div class="portal-stats"><div><b>12</b><span>Sessions</span></div><div><b>3</b><span>Current Goals</span></div><div><b>5</b><span>Personal Wins</span></div><div><b>2</b><span>Coach Videos</span></div></div>
   <div class="portal-nav"><button class="active" data-portal="home" onclick="portalTab('home')">My Home</button><button data-portal="workout" onclick="portalTab('workout')">Workout</button><button data-portal="recap" onclick="portalTab('recap')">Session Recap</button><button data-portal="progress" onclick="portalTab('progress')">Progress</button><button data-portal="videos" onclick="portalTab('videos')">Videos</button><button data-portal="ai" onclick="portalTab('ai')">Elise AI Coach</button><button data-portal="message" onclick="portalTab('message')">Check In</button><button data-portal="capture" onclick="portalTab('capture')">Elise: Session Capture</button></div>
