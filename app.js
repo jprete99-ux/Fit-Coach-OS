@@ -98,7 +98,7 @@ document.addEventListener("DOMContentLoaded",()=>{
  if(token){
   show("portal");
   const s=document.getElementById("secureInviteSetup");if(s)s.style.display="block";
-  const b=document.getElementById("portalEnterButton");if(b){b.textContent="Create My Account & Enter Portal";b.onclick=acceptSecureInvite}
+  const b=document.getElementById("portalEnterButton");if(b){b.textContent="Create My Account & Enter Portal";b.onclick=secureInviteSubmit}
   const demo=[...document.querySelectorAll("#portalWelcome button.secondary")];demo.forEach(x=>x.style.display="none");
   const note=document.querySelector("#portalWelcome .test-note");if(note)note.style.display="none";
   window.scrollTo({top:0});
@@ -122,3 +122,10 @@ function activateSecureInviteView(){
 }
 
 document.addEventListener("DOMContentLoaded",activateSecureInviteView);
+
+function secureInviteSubmit(e){
+ if(e){e.preventDefault();e.stopPropagation()}
+ const token=new URLSearchParams(location.search).get("invite");
+ if(token){acceptSecureInvite();return false}
+ completeOnboarding();return false
+}
