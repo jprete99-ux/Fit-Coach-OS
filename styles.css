@@ -44,3 +44,6 @@
   #sessionComposer>button.secondary{margin-left:145px;margin-top:-48px}
 }
 @media(max-width:719px){#clients .card.wide{padding:20px}#sessionComposer{padding:16px}}
+
+.client-hub-empty{margin-top:24px;padding:22px;border-top:1px solid #29405e;background:linear-gradient(145deg,#0b1929,#091522);border-radius:16px}
+.client-hub-empty h3{margin:4px 0 6px}.client-hub-empty p{max-width:680px}
