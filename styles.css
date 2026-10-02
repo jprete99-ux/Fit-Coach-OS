@@ -49,3 +49,17 @@
 .client-hub-empty h3{margin:4px 0 6px}.client-hub-empty p{max-width:680px}
 
 .date-picker-wrap{display:flex;gap:8px;align-items:center;margin-top:7px}.date-picker-wrap #sessionDate{margin-top:0;flex:1}.calendar-btn{padding:11px 14px;min-width:48px;font-size:18px;background:#17324e;border:1px solid #355775;box-shadow:none}
+
+/* Secure client invitation polish */
+.client-invite-mode main{max-width:920px;margin:0 auto;padding-top:34px}
+.client-invite-mode #portalWelcome{max-width:860px;margin:0 auto}
+.client-invite-mode .onboard-card{padding:42px 44px;border-radius:24px}
+.client-invite-mode #secureInviteSetup{margin-bottom:34px;padding-bottom:30px;border-bottom:1px solid rgba(140,190,230,.22)}
+.client-invite-mode #secureInviteSetup h2{margin:8px 0 10px;font-size:clamp(32px,4vw,48px);line-height:1.05}
+.client-invite-mode #secureInviteSetup p{max-width:680px}
+.client-invite-mode .invite-password-label{display:block;margin-top:22px;font-weight:700;max-width:520px}
+.client-invite-mode .invite-password-input{display:block;width:100%;box-sizing:border-box;margin-top:8px;padding:14px 16px;border-radius:10px}
+.client-invite-mode #portalWelcome .onboard-grid{gap:18px 14px}
+.client-invite-mode #portalWelcome input,.client-invite-mode #portalWelcome select,.client-invite-mode #portalWelcome textarea{font-size:16px}
+.client-invite-mode #portalWelcome h2{line-height:1.08}
+@media(max-width:700px){.client-invite-mode main{padding:18px 12px}.client-invite-mode .onboard-card{padding:26px 20px}.client-invite-mode #secureInviteSetup h2{font-size:34px}}
