@@ -104,3 +104,21 @@ document.addEventListener("DOMContentLoaded",()=>{
   window.scrollTo({top:0});
  }
 });
+
+function activateSecureInviteView(){
+ const token=new URLSearchParams(location.search).get("invite"); if(!token)return;
+ document.body.classList.add("client-invite-mode");
+ ["coachHero","coachSportStrip","coachTabs"].forEach(id=>{const el=document.getElementById(id);if(el)el.style.display="none"});
+ document.querySelectorAll(".view").forEach(v=>v.classList.remove("active"));
+ const portal=document.getElementById("portal");if(portal)portal.classList.add("active");
+ const welcome=document.getElementById("portalWelcome");if(welcome)welcome.style.display="block";
+ const dash=document.getElementById("portalDashboard");if(dash)dash.style.display="none";
+ const secure=document.getElementById("secureInviteSetup");if(secure)secure.style.display="block";
+ const btn=document.getElementById("portalEnterButton");if(btn){btn.textContent="Create My Account & Enter Portal";btn.onclick=acceptSecureInvite}
+ document.querySelectorAll("#portalWelcome button.secondary").forEach(x=>x.style.display="none");
+ const note=document.querySelector("#portalWelcome .test-note");if(note)note.style.display="none";
+ const name=document.getElementById("onboardName");if(name&&name.value==="Joe")name.value="";
+ window.scrollTo({top:0});
+}
+
+document.addEventListener("DOMContentLoaded",activateSecureInviteView);
